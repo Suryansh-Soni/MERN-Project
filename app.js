@@ -4,14 +4,20 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing");
 const Path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+
 app.use(methodOverride("_method"));
+
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set("views", Path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(Path.join(__dirname, "public")));
+
 
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
-app.set("view engine", "ejs");
-app.set("views", Path.join(__dirname, "views"));
-app.use(express.urlencoded({ extended: true }));
 
 main()
   .then(() => {
