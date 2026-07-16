@@ -21,7 +21,7 @@ const listingSchema = new Schema({
       type: String,
       default: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
       set: (v) =>
-        v === ""
+        !v || v.trim() === ""
           ? "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
           : v,
     },
