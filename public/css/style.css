@@ -127,3 +127,51 @@ body {
 .card-text {
   min-height: 60px;
 }
+
+/* Signup Page */
+
+.signup-container {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.signup-card {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 1.2rem;
+  transition: 0.3s ease;
+}
+
+.signup-card:hover {
+  transform: translateY(-5px);
+}
+
+.signup-icon {
+  font-size: 3rem;
+  color: #fe424d;
+  margin-bottom: 1rem;
+}
+
+.signup-card h2 {
+  font-weight: 700;
+}
+
+.signup-card .form-control {
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+}
+
+.signup-card .form-control:focus {
+  border-color: #fe424d;
+  box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.2);
+}
+
+.login-link {
+  color: #fe424d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
