@@ -6,8 +6,9 @@ const session = require("express-session");
 const Path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -61,17 +62,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/demouser", async (req, res) => {
-  let fakeuser = new User({
-    email: "dae@gmail.com",
-    username: "suryansh3",
-  });
-  let reguser = await User.register(fakeuser, "password");
-  res.send(reguser);
-});
+//  app.get("/demouser", async (req, res) => {
+//   let fakeuser = new User({
+//     email: "dae@gmail.com",
+//     username: "suryansh3",
+//   });
+//   let reguser = await User.register(fakeuser, "password");
+//   res.send(reguser);
+// });
 
-app.use("/listings", listings);
-app.use("/listings/:id/reviews", reviews);
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 app.all("/*splat", (req, res, next) => {
   next(new ExpressError(404, "Page not Found"));
