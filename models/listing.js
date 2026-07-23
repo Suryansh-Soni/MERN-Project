@@ -44,6 +44,11 @@ const listingSchema = new Schema({
       ref: "review",
     },
   ],
+
+  owner:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User"
+  }
 });
 listingSchema.post("findOneAndDelete", async (listing) => {
   if (listing) {
